@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NexusAI — Powered by GLM-5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+  <!-- Noise overlay -->
+  <div class="noise"></div>
+  <!-- Animated grid background -->
+  <div class="grid-bg"></div>
+  <!-- Glow orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">NexusAI</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#models">Models</a>
+        <a href="#pricing">Pricing</a>
+        <a href="pages/login.html" class="btn-ghost">Login</a>
+        <a href="pages/register.html" class="btn-primary">Get Started</a>
+      </div>
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      GLM-5 Flash · Zero — Now Live
+    </div>
+    <h1 class="hero-title">
+      <span class="line">Intelligence</span>
+      <span class="line gradient-text">Without Limits</span>
+    </h1>
+    <p class="hero-sub">
+      A premium AI workspace powered by Zhipu's GLM-5. Code, create, analyze,<br>
+      and build — with full file support, thinking mode, and blazing speed.
+    </p>
+    <div class="hero-cta">
+      <a href="pages/register.html" class="btn-hero">Start for Free <span>→</span></a>
+      <a href="pages/chat.html" class="btn-demo">
+        <span class="pulse-dot"></span> Live Demo
+      </a>
+    </div>
+    <!-- Floating chat preview -->
+    <div class="hero-preview">
+      <div class="preview-window">
+        <div class="preview-header">
+          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+          <span>NexusAI — GLM-5 Flash</span>
+        </div>
+        <div class="preview-body">
+          <div class="msg user">Build me a React dashboard with charts</div>
+          <div class="msg ai">
+            <span class="ai-icon">⬡</span>
+            <div>
+              <p>I'll create a full React dashboard. Here's the component:</p>
+              <div class="code-block">
+                <span class="code-lang">jsx</span>
+                <pre><code>import React from 'react';
+import { LineChart, BarChart } from 'recharts';
+
+export default function Dashboard() {
+  return (
+    &lt;div className="dashboard"&gt;
+      &lt;LineChart data={metrics} /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+              </div>
+              <div class="file-chip">📦 dashboard.zip <button>↓</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="preview-input">
+          <input placeholder="Ask anything..." readonly>
+          <button class="send-btn">⬆</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="section-label">CAPABILITIES</div>
+    <h2 class="section-title">Everything you need.<br>Nothing you don't.</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feat-icon">◈</div>
+        <h3>Multi-File Support</h3>
+        <p>Upload and download ZIP, HTML, CSS, JS, Python, PDF, images, and more. Full project context in every conversation.</p>
+      </div>
+      <div class="feature-card featured">
+        <div class="feat-icon">⟳</div>
+        <h3>Thinking Mode</h3>
+        <p>Enable extended reasoning for complex problems. Watch the model think step-by-step through difficult code and math.</p>
+        <div class="feat-badge">NEW</div>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">⬡</div>
+        <h3>Model Switching</h3>
+        <p>GLM-5 Flash for speed, GLM-5 for power, GLM-5-Zero for raw reasoning. Switch models mid-conversation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">⌘</div>
+        <h3>Code Workspace</h3>
+        <p>Syntax-highlighted code blocks, one-click copy, instant file download. Built for developers first.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">◷</div>
+        <h3>Chat History</h3>
+        <p>Full persistent history with search, rename, and bulk delete. Your conversations, always accessible.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">☁</div>
+        <h3>Cloud Sync</h3>
+        <p>All conversations synced via Firebase. Access from any device. Real-time streaming responses.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODELS -->
+  <section class="models" id="models">
+    <div class="section-label">MODELS</div>
+    <h2 class="section-title">Pick your intelligence</h2>
+    <div class="models-row">
+      <div class="model-card">
+        <div class="model-header">
+          <span class="model-dot flash"></span>
+          <span class="model-tag">FAST</span>
+        </div>
+        <h3>GLM-4.7</h3>
+        <p>Fast responses with strong reasoning. Best for coding help, Q&amp;A, and quick analysis. API ID: <code>glm-4.7</code></p>
+        <div class="model-stats">
+          <div><span>Speed</span><div class="bar"><div style="width:92%"></div></div></div>
+          <div><span>Reasoning</span><div class="bar"><div style="width:78%"></div></div></div>
+          <div><span>Context</span><div class="bar"><div style="width:85%"></div></div></div>
+        </div>
+      </div>
+      <div class="model-card active">
+        <div class="model-header">
+          <span class="model-dot standard"></span>
+          <span class="model-tag">LATEST</span>
+        </div>
+        <h3>GLM-5</h3>
+        <p>The new flagship. 744B parameters, open-source SOTA coding, agentic tasks approaching Claude Opus level. API ID: <code>glm-5</code></p>
+        <div class="model-stats">
+          <div><span>Speed</span><div class="bar"><div style="width:75%"></div></div></div>
+          <div><span>Reasoning</span><div class="bar"><div style="width:97%"></div></div></div>
+          <div><span>Context</span><div class="bar"><div style="width:95%"></div></div></div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-header">
+          <span class="model-dot zero"></span>
+          <span class="model-tag">THINK</span>
+        </div>
+        <h3>GLM-4.5</h3>
+        <p>Maximum reasoning depth with thinking mode. Built for complex math, research, and architecture. API ID: <code>glm-4.5</code></p>
+        <div class="model-stats">
+          <div><span>Speed</span><div class="bar"><div style="width:55%"></div></div></div>
+          <div><span>Reasoning</span><div class="bar"><div style="width:94%"></div></div></div>
+          <div><span>Context</span><div class="bar"><div style="width:90%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <div class="cta-glow"></div>
+    <h2>Ready to build?</h2>
+    <p>Join thousands of developers using NexusAI to ship faster.</p>
+    <a href="pages/register.html" class="btn-hero">Create Free Account <span>→</span></a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">NexusAI</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Docs</a>
+        <a href="#">Support</a>
+      </div>
+      <p class="footer-copy">© 2025 NexusAI. Powered by Zhipu GLM-5.</p>
+    </div>
+  </footer>
+
+  <script src="js/landing.js"></script>
+</body>
+</html>
