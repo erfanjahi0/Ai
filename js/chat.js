@@ -14,18 +14,18 @@ import {
 // ─── FIREBASE CONFIG ──────────────────────────────────────────
 // ⚠️ Replace with your Firebase config
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDiIpfl0ijYWFNASESCInuPFBMLP2TNUwI",
+  authDomain: "pulsechat-7c26e.firebaseapp.com",
+  projectId: "pulsechat-7c26e",
+  storageBucket: "pulsechat-7c26e.firebasestorage.app",
+  messagingSenderId: "376727797021",
+  appId: "1:376727797021:web:56b1a16246b5b9c84af5f4""
 };
 
 // ─── BIGMODEL API KEY ─────────────────────────────────────────
 // ⚠️ Replace with your BigModel.cn API key
 // Get your key at: https://open.bigmodel.cn/
-const BIGMODEL_API_KEY = "YOUR_BIGMODEL_API_KEY";
+const BIGMODEL_API_KEY = "19d273094c464715be793fa68f1ae014.RohEEBBzCJ1MHSc2";
 const API_BASE = "https://open.bigmodel.cn/api/paas/v4";
 
 // ─── INIT ─────────────────────────────────────────────────────
