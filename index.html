@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat with BigModel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="chat-header">
+            <h1>AI Chat</h1>
+            <p>Powered by BigModel.cn API</p>
+        </header>
+        
+        <div class="chat-container">
+            <div id="chat-messages" class="chat-messages">
+                <div class="message bot-message">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">Hello! I'm your AI assistant. How can I help you today?</div>
+                </div>
+            </div>
+            
+            <div class="input-area">
+                <form id="chat-form">
+                    <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off" required>
+                    <button type="submit" id="send-button">Send</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="settings">
+            <div class="api-key-container">
+                <label for="api-key">BigModel API Key:</label>
+                <input type="password" id="api-key" placeholder="Enter your API key">
+            </div>
+            <div class="model-select">
+                <label for="model-select">Model:</label>
+                <select id="model-select">
+                    <option value="glm-4">GLM-4</option>
+                    <option value="glm-4v">GLM-4V</option>
+                    <option value="glm-4-air">GLM-4-Air</option>
+                    <option value="glm-4-airx">GLM-4-AirX</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
