@@ -7,12 +7,12 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <Head>
         <title>My Blog</title>
-        <meta name="description" content="Welcome to my blog" />
+        <meta name="description" content="Articles and guides." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h1 className={styles.title}>Welcome</h1>
-        <p className={styles.description}>Nothing to see here.</p>
+        <h1 className={styles.title}>My Blog</h1>
+        <p className={styles.description}>Articles, guides, and more.</p>
       </main>
     </div>
   )
