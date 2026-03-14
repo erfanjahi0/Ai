@@ -2,19 +2,17 @@ import React from 'react';
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 
-// --- HARDCODED CONFIGURATION ---
-const BLOGGER_API_KEY = 'AIzaSyCl2qhx-sTl_8yMGaASQKvLFsz0lLCGfBM';
-const BLOGGER_BLOG_ID = '6570421891733638741';
-const BLOG_DOMAIN = 'amazingnaturalbeeauty.blogspot.com'; 
-// -------------------------------
+const BLOGGER_API_KEY = process.env.BLOGGER_API_KEY!;
+const BLOGGER_BLOG_ID = process.env.BLOGGER_BLOG_ID!;
+const BLOG_DOMAIN = process.env.BLOG_DOMAIN!;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const referringURL = ctx.req.headers?.referer || null;
-  const pathArr = (ctx.query.postpath as string[]) || [];
+  const pathArr = ctx.query.postpath as Array<string>;
   const path = '/' + pathArr.join('/');
   const fbclid = ctx.query.fbclid;
 
-  // Redirect real Facebook visitors to your actual blog
+  // Redirect real Facebook visitors straight to your actual blog
   if (referringURL?.includes('facebook.com') || fbclid) {
     return {
       redirect: {
@@ -24,21 +22,16 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
   }
 
-  // Fetch post data from Blogger API for the crawler
+  // Serve OG meta tags to Facebook's crawler
   try {
     const res = await fetch(
       `https://www.googleapis.com/blogger/v3/blogs/${BLOGGER_BLOG_ID}/posts/bypath?path=${encodeURI(path)}&key=${BLOGGER_API_KEY}`
     );
 
-    if (!res.ok) {
-      return { notFound: true };
-    }
+    if (!res.ok) return { notFound: true };
 
     const post = await res.json();
-
-    if (!post || post.error) {
-      return { notFound: true };
-    }
+    if (!post || post.error) return { notFound: true };
 
     return {
       props: {
@@ -47,8 +40,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
           content: post.content || '',
           published: post.published || '',
           updated: post.updated || '',
-          authorName: post.author?.displayName || '',
-          url: post.url || '',
         },
         host: ctx.req.headers.host || '',
         path,
@@ -65,44 +56,51 @@ interface PostProps {
     content: string;
     published: string;
     updated: string;
-    authorName: string;
-    url: string;
   };
   host: string;
   path: string;
 }
 
-const Post: React.FC<PostProps> = ({ post, host }) => {
-  const removeTags = (str: string) => {
+const Post: React.FC<PostProps> = ({ post, host, path }) => {
+  const stripTags = (str: string) => {
     if (!str) return '';
     return str
-      .toString()
       .replace(/(<([^>]+)>)/gi, '')
-      .replace(/\[[^\]]*\]/, '')
+      .replace(/\[[^\]]*\]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
       .slice(0, 160);
   };
 
-  const excerpt = removeTags(post.content);
+  const excerpt = stripTags(post.content);
+  const siteName = host?.split('.')[0] || '';
+  const canonicalUrl = `https://${BLOG_DOMAIN}${path}`;
 
   return (
     <>
       <Head>
         <title>{post.title}</title>
+        <meta name="description" content={excerpt} />
+
+        {/* Open Graph */}
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={excerpt} />
         <meta property="og:type" content="article" />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content={host?.split('.')[0] || 'Blog'} />
+        <meta property="og:site_name" content={siteName} />
         <meta property="article:published_time" content={post.published} />
         <meta property="article:modified_time" content={post.updated} />
-        <meta name="description" content={excerpt} />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={excerpt} />
+
+        {/* Canonical */}
+        <link rel="canonical" href={canonicalUrl} />
       </Head>
       <div className="post-container">
-        <style jsx>{`
-          .post-container { max-width: 800px; margin: 0 auto; padding: 20px; font-family: sans-serif; }
-          h1 { color: #333; }
-          article { line-height: 1.6; }
-        `}</style>
         <h1>{post.title}</h1>
         <article dangerouslySetInnerHTML={{ __html: post.content }} />
       </div>
